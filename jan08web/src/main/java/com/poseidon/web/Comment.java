@@ -25,8 +25,7 @@ public class Comment extends HttpServlet {
 			throws ServletException, IOException {
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");// 한글처리
 		HttpSession session = request.getSession();
 
@@ -36,11 +35,11 @@ public class Comment extends HttpServlet {
 			String commentcontent = request.getParameter("commentcontent");// 댓글내용
 			
 			
+			
 			//HTML에서 태그를 특수기호로 변경하기
 			commentcontent = Util.removeTag(commentcontent);
 			
-			//엔터처리/r /n /nr
-			
+			//엔터처리 /r /n /nr
 			commentcontent = Util.addBR(commentcontent);
 			
 			

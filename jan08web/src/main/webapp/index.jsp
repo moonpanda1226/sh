@@ -42,9 +42,8 @@
 						not empty
 					</c:if>  --%>
 					
-					유리진선 수지효진 철수선우 짱아솔범 흰둥이뚱 Let`s go<br>
+				
 					<br>
-					
 					<hr>
 
 					<br>
@@ -54,26 +53,7 @@
 					<br>
 					오호잇~~ 다들 열공해서 나처럼 귀여워지라구~~~❤️‍🔥🤗
 					 <br>
-					
-					<br>
-					설표 메모 <br>
-					1. 라이브러리와 프레임워크 <br>
-					2. 오버로딩과 오버라이딩 <br>
-					3. 힙 영역의 사용법 <br>
-					4. 클래스와 인터페이스 차이! <br>
-					5. var, let, const, 호이스팅 <br>
-					6. 사이트 뒤에 .do 가 붙는 이유 <br>
-					7.myinfo 에 자신이 읽은 글 번호, 글 제목(링크), 읽은 시간
-					
-				<%--	1~45까지 짝수만 출력하세요.
-				</article>
-				<article>
 				
-					<c:forEach begin="1" end="45" var="row">
-						<c:if test="${row % 2 eq 0 }">
-							${row }<br>
-						</c:if>
-					</c:forEach> --%>
 					
 				</article>
 				<article>

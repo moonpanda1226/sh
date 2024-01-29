@@ -8,7 +8,8 @@
 		<li onclick="url('./qna')"><i class="xi-emoticon-happy"></i>멍멍멍</li>
 		<li onclick="url('./notice')"><i class="xi-emoticon-smiley-o"></i>멍멍</li>
 		<li onclick="url('./bootstrap')">멍멍멍</li>
-		<li onclick="url('./info')"><i class="xi-emoticon-smiley"></i>멍멍</li>
+		<li onclick="url('./info')"><i class="xi-emoticon-smiley"></i>멍멍</li>		
+		<li onclick="url('./cafe')">커피</li>
 		<li onclick="url('./team')">왈왈</li><c:choose><c:when test="${sessionScope.mname eq null}">
 		<li onclick="url('./login')"><i class="xi-heart-o"></i>멍</li></c:when><c:otherwise>
 		<li onclick="url('./myInfo')"><i class="xi-key"></i>${sessionScope.mname}님</li>

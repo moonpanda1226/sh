@@ -26,7 +26,7 @@ public class Team extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
-		pw.println("<htlm>");
+		pw.println("<html>");
 		pw.println("<head>");
 		pw.println("<title>Team뽑기</title>");
 		pw.println("</head>");

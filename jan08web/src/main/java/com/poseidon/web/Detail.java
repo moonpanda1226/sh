@@ -32,11 +32,14 @@ public class Detail extends HttpServlet {
 		// int no = Integer.parseInt(request.getParameter("no"));
 		int no = Util.str2Int(request.getParameter("no"));
 
-		// log
-		// LogDAO log = new LogDAO();
+	
 
 		// 데이터베이스에 질의하기
 		BoardDAO dao = new BoardDAO();
+		
+		// log
+		// LogDAO log = new LogDAO();
+		
 		dao.logWrite(Util.getIP(request), "./detail", "no=" + no);
 
 		// 로그인한 회원이라면 읽음수 올리기 2024-01-19 프레임워크 프로그래밍(1/31)
@@ -47,9 +50,7 @@ public class Detail extends HttpServlet {
 
 		}
 		BoardDTO dto = dao.detail(no);
-		String ip = dto.getIp();
-		ip = Util.ipMasking(ip);
-
+	
 		// System.out.println(dto.getTitle());
 		// System.out.println(dto.getContent() == null);
 
@@ -60,7 +61,6 @@ public class Detail extends HttpServlet {
 			// 정상 출력
 			// 내용 가져오기
 			request.setAttribute("detail", dto);
-			request.setAttribute("ip", ip);
 
 			// 댓글이 있다면 LIST 뽑아내기
 			List<CommentDTO> commentList = dao.commentList(no);
