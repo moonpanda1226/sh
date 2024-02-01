@@ -9,7 +9,6 @@ import com.poseidon.db.DBConnection;
 
 //부모 DAO = DBConn, close
 public class AbstractDAO {
-
 	DBConnection db = DBConnection.getInstance();
 	
 	public void logWrite(String ip, String url, String data) {
@@ -26,15 +25,11 @@ public class AbstractDAO {
 			pstmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(null, pstmt, con);
-			
-			
 		}
-		
-		
 	}
-
+	
 	
 	void close(ResultSet rs, PreparedStatement pstmt, Connection con) {
 		if(rs != null) {
@@ -59,5 +54,4 @@ public class AbstractDAO {
 			}
 		}
 	}
-	
 }

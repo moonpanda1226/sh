@@ -1,8 +1,7 @@
 package com.poseidon.dto;
 
-//리스트 
 public class BoardDTO {
-	private int no, count, mno, comment, del;
+	private int no, count, comment, del;
 	private String title, content, write, date, mid, ip;
 
 	public int getNo() {
@@ -19,6 +18,22 @@ public class BoardDTO {
 
 	public void setCount(int count) {
 		this.count = count;
+	}
+
+	public int getComment() {
+		return comment;
+	}
+
+	public void setComment(int comment) {
+		this.comment = comment;
+	}
+
+	public int getDel() {
+		return del;
+	}
+
+	public void setDel(int del) {
+		this.del = del;
 	}
 
 	public String getTitle() {
@@ -61,22 +76,6 @@ public class BoardDTO {
 		this.mid = mid;
 	}
 
-	public int getMno() {
-		return mno;
-	}
-
-	public void setMno(int mno) {
-		this.mno = mno;
-	}
-
-	public int getComment() {
-		return comment;
-	}
-
-	public void setComment(int comment) {
-		this.comment = comment;
-	}
-
 	public String getIp() {
 		return ip;
 	}
@@ -84,14 +83,5 @@ public class BoardDTO {
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
-
-	public int getDel() {
-		return del;
-	}
-
-	public void setDel(int del) {
-		this.del = del;
-	}
-
 
 }

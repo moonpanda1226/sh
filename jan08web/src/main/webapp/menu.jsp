@@ -10,7 +10,9 @@
 		<li onclick="url('./bootstrap')">멍멍멍</li>
 		<li onclick="url('./info')"><i class="xi-emoticon-smiley"></i>멍멍</li>		
 		<li onclick="url('./cafe')">커피</li>
-		<li onclick="url('./team')">왈왈</li><c:choose><c:when test="${sessionScope.mname eq null}">
+		<li onclick="url('./media')">미디어쿼리</li>
+		<li onclick="url('./team')">왈왈</li>
+		<c:choose><c:when test="${sessionScope.mname eq null}">
 		<li onclick="url('./login')"><i class="xi-heart-o"></i>멍</li></c:when><c:otherwise>
 		<li onclick="url('./myInfo')"><i class="xi-key"></i>${sessionScope.mname}님</li>
 		<li onclick="url('./logout')"><i class="xi-hand-paper"></i>로그아웃</li></c:otherwise></c:choose>

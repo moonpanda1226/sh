@@ -31,25 +31,28 @@
 </style>
 <script type="text/javascript">
 	//$(document).ready(function (){ 다른 모양
-		//글로벌 변수
-		let idCheckBool = false;
+	//글로벌 변수
+	let idCheckBool = false;
 	
-	$(function (){
+	$(function (){//제이쿼리 시작문 = 제이쿼리 시작합니다.
 		$('.id-alert, .name-alert, .pw-alert').hide();
 		
 		//onchange()
-		//$("#id").onchange(function(){
-		//	alert("아이디입력창 값이 변경되었습니다");	
-		//}):
-			
-		$("#id").on("change keyup paste" function(){
+		//$("#id").change(function (){
+		//	alert("아이디입력창 값이 변경되었습니다.");
+		//});
+		$('#id').on("change keyup paste", function(){
+			//alert("아이디입력창 값이 변경되었습니다.");
 			$('.id-alert').show();
-			$('.id-alert').html('<p class="alert">당신이 입력한 ID는 ' + $('#id').val() + '</p>');
+			$('.id-alert').html('<p class="alert">당신이 입력한 ID는 ' + $('#id').val() +  '</p>');
 			if($('#id').val().length > 5){
 				idCheck();
-				}
-			
+			}
 		});
+		
+		
+		
+	});
 
 	function check() {
 		// $(선택자).할일();
@@ -62,7 +65,7 @@
 			$('.id-alert').hide();
 		}
 		if(!idCheckBool){
-			alert("ID 검사를 먼저 실행해주세요")
+			alert("ID 검사를 먼저 실행해주세요.");
 			return false;
 		}
 		
@@ -97,12 +100,13 @@
 	function idCheck(){
 		//alert('id검사를 눌렀습니다');
 		let id = $('#id').val();
-		//const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\sㄱ-ㅎㅏ-ㅣ가-힣]/g;//한글+공백
+		const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\sㄱ-ㅎㅏ-ㅣ가-힣]/g;//한글+공백
 		//alert(regExp.test(id)); // 한글,공백 포함여부 검사하는 정규식
-		
-		const regExp = /^[a-z0-9]{5, 15}$/;
+		//나중에는 영어 소문자, 숫자만
+		/* const regExp = /^[a-z0-9]{5,15}$/; */
 		if(id.length < 5 || regExp.test(id)){
 			alert("아이디는 영문자 5글자 이상이고 특수문자가 없어야합니다.");
+			$('.id-alert').html('<p class="alert">아이디는 영문자 5글자 이상이고 특수문자가 없어야합니다.</p>')
 			$('#id').focus();
 		} else {
 			//AJAX = 1페이징, 2AJAX, 3파일업로드
@@ -114,17 +118,18 @@
 				success : function(result){	//성공시
 					//alert("통신에 성공했습니다");
 					if(result == 1){
-						alert("이미 가입되어있습니다.");
+						//alert("이미 가입되어있습니다.");
+						$('.id-alert').append('<p class="alert">이미 가입되어있습니다.</p>');
 						idCheckBool = false;
 						$("#joinBtn").attr("disabled", "disabled");//비활성화 시키기
 						$('#id').focus();
 					} else {
-						alert("가입할 수 있습니다. 다음을 계속 진행하세요.");
+						//alert("가입할 수 있습니다. 다음을 계속 진행하세요.");
 						$('.id-alert').append('<p class="alert">가입할 수 있습니다.</p>');
-						$('.id-alert .alert').css("color", "green");
+						$('.id-alert .alert').css("color","green");
 						idCheckBool = true;
 						$("#joinBtn").removeAttr("disabled");//비활성화 제거하기 = 활성화 시키기
-						$('#name').focus();
+						//$('#name').focus();
 					}
 				},
 				error : function(request, status, error){//접속불가, 문제발생 등
@@ -137,10 +142,6 @@
 </script>
 </head>
 <body>
-
-	<c:forEach items="집합" var="h">
-		${h} 
-	</c:forEach>
 	<div class="container1">
 		<header>
 			<%@ include file="menu.jsp"%>

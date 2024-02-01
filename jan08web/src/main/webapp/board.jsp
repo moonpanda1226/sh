@@ -61,15 +61,22 @@
 							<c:if test="${totalCount % 10 gt 0 }">
 							<c:set var="totalPage" value="${totalPage + 1}"/>
 							</c:if>
-							<c:out value="${totalPage}"/>
+							 <c:set var="startPage" value="1"/>
+							 <c:if test="${page gt 5 }">
+							 	<c:set var="startPage" value="${page - 5 }"/>
+							 </c:if>
+							 <c:set var="endPage" value="${startPage + 9 }"/>
+							 <c:if test="${endPage gt totalPage }">
+							 	<c:set var="endPage" value="${totalPage }"/>
+							</c:if>
+							<%-- <c:out value="${totalPage}"/>
 							13 14 15 16 17 18 19 20 21 22
 							/ startPage : <c:set var="startPage" value="1"/>
 							<c:if test="${page gt 5 }">
 								<c:set var="startPage" value="${Page - 5 }"/>
 							</c:if>
 							/ endPage : <c:set var="endPage" value="${startPage + 9 }"/> ${endPage }
-							/ page : ${page }
-							
+							/ page : ${page } --%>
 							
 							<div class="paging">
 							<button onclick="paging(1)">🥕</button>

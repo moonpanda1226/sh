@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.storeconfig.CertificateStoreAppender;
-
 import com.poseidon.dao.BoardDAO;
 import com.poseidon.dto.BoardDTO;
 import com.poseidon.util.Util;
@@ -29,15 +27,13 @@ public class Update extends HttpServlet {
 		HttpSession session = request.getSession();
 		// 세션이 있을 때 = 정상작업하기
 		if (session.getAttribute("mid") != null) {
-			// no잡기
 			int no = Util.str2Int(request.getParameter("no"));
-			// DAO에 질의하기
 			BoardDAO dao = new BoardDAO();
 			BoardDTO dto = dao.detail(no);
-//			System.out.println(dto.getMid().equals(session.getAttribute("mid")));
-//			System.out.println(session.getAttribute("mid").equals(dto.getMid()));
-//			System.out.println(session.getAttribute("mid") == dto.getMid());
-//			System.out.println(((String)session.getAttribute("mid")).equals(dto.getMid()));
+			// System.out.println(dto.getMid().equals(session.getAttribute("mid")));
+			// System.out.println(session.getAttribute("mid").equals(dto.getMid()));
+			// System.out.println(session.getAttribute("mid") == dto.getMid());
+			// System.out.println(((String)session.getAttribute("mid")).equals(dto.getMid()));
 
 			if (session.getAttribute("mid").equals(dto.getMid())) {
 				request.setAttribute("update", dto);
@@ -52,13 +48,11 @@ public class Update extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		if (request.getParameter("title") != null && request.getParameter("content") != null
-				&& Util.intCheck(request.getParameter("no"))) {
+				&& Util.intCheck(request.getParameter("no")) && session.getAttribute("mid") != null) {
 			// 진짜 수정
 			BoardDTO dto = new BoardDTO();
 			dto.setContent(request.getParameter("content"));
@@ -72,17 +66,13 @@ public class Update extends HttpServlet {
 			if (result == 1) {
 				response.sendRedirect("./detail?no=" + request.getParameter("no"));
 			} else {
-				// error
 				response.sendRedirect("./error.jsp");
 			}
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
-			String no = request.getParameter("no");
 
-			System.out.println(title);
-			System.out.println(content);
-			System.out.println(no);
+		} else {
+			// error
+			response.sendRedirect("./error.jsp");
 		}
-
 	}
+
 }

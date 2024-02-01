@@ -23,33 +23,33 @@ public class Members extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameter("grade"));
+		//System.out.println(request.getParameter("grade"));
 		
 		AdminDAO dao = new AdminDAO();
 		List<MemberDTO> list = null;
-		if (request.getParameter("grade") == null || request.getParameter("grade").equals("")) {
-		list = dao.memberList();
+		if(request.getParameter("grade") == null || request.getParameter("grade").equals("")) {
+			list = dao.memberList();			
 		} else {
-		list = dao.memberList(Util.str2Int2(request.getParameter("grade")));
+			list = dao.memberList(Util.str2Int(request.getParameter("grade")));
 		}
+		
 		request.setAttribute("list", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/members.jsp");
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println(request.getParameter("mno"));
-		//System.out.println(request.getParameter("grade"));
-		
 		//db에 변경
 		AdminDAO dao = new AdminDAO();
 		int result = dao.memberUpdate(Util.str2Int(request.getParameter("grade")), Util.str2Int(request.getParameter("mno")));
-		System.out.println(result);
+		//System.out.println(result);
 		//페이지 이동
-		if(request.getParameter("currentgrade") == null) {			
+		if(request.getParameter("currentgrade") == null || request.getParameter("currentgrade").equals("")) {			
 			response.sendRedirect("./members");
 		}else {
 			response.sendRedirect("./members?grade=" + request.getParameter("currentgrade"));
 		}
+		
 	}
+
 }

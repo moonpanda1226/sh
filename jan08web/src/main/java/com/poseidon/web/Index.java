@@ -1,10 +1,6 @@
 package com.poseidon.web;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,17 +21,16 @@ public class Index extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		//response.sendRedirect("index.jsp");
+		//log
 		LogDAO log = new LogDAO();
-		log.logWrite(Util.getIP(request),"./index",null);
+		log.logWrite(Util.getIP(request), "./index", null);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 	}
 
 }

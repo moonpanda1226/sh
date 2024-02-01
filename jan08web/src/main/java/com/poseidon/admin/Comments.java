@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.poseidon.dao.AdminDAO;
+import com.poseidon.dto.CommentDTO;
 import com.poseidon.dto.MemberDTO;
 import com.poseidon.util.Util;
 
@@ -24,7 +25,12 @@ public class Comments extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/comments.jsp");
+		AdminDAO dao = new AdminDAO();
+		List<CommentDTO> list = dao.commentList();
+		
+		request.setAttribute("list", list);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/comment.jsp");
 		rd.forward(request, response);
 	}
 

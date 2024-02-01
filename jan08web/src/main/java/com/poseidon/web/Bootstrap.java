@@ -16,10 +16,10 @@ import com.poseidon.dto.BoardDTO;
 @WebServlet("/bootstrap")
 public class Bootstrap extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	public Bootstrap() {
-		super();
-	}
+       
+    public Bootstrap() {
+        super();
+    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -33,7 +33,6 @@ public class Bootstrap extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 	}
 
 }

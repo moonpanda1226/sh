@@ -41,8 +41,10 @@
 						empty
 						not empty
 					</c:if>  --%>
-					
-				
+					<br>
+					<br>
+					🥰애두랑 어서 들어와서 나랑 게시판 놀이하댱🥰
+					<br>
 					<br>
 					<hr>
 
