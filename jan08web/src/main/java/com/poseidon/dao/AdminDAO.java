@@ -14,7 +14,7 @@ import com.poseidon.dto.CommentDTO;
 import com.poseidon.dto.MemberDTO;
 
 public class AdminDAO extends AbstractDAO {
-
+//계정 관리
 	public List<MemberDTO> memberList() {
 		List<MemberDTO> list = new ArrayList<MemberDTO>();
 		Connection con = db.getConnection();
@@ -41,7 +41,7 @@ public class AdminDAO extends AbstractDAO {
 		}
 		return list;
 	}
-
+//계정 등급 관리
 	public List<MemberDTO> memberList(int grade) {
 		List<MemberDTO> list = new ArrayList<MemberDTO>();
 		Connection con = db.getConnection();
@@ -69,7 +69,7 @@ public class AdminDAO extends AbstractDAO {
 		}
 		return list;
 	}
-
+//레벨업
 	public int memberUpdate(int grade, int mno) {
 		Connection con = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -88,7 +88,7 @@ public class AdminDAO extends AbstractDAO {
 		}
 		return result;
 	}
-
+//게시물 관리
 	public List<BoardDTO> boardList() {
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
 		Connection con = db.getConnection();
@@ -123,7 +123,7 @@ public class AdminDAO extends AbstractDAO {
 		}
 		return list;
 	}
-
+//게시글 리스트 검색
 	public List<BoardDTO> boardList(String parameter) {
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
 		Connection con = db.getConnection();
@@ -163,7 +163,7 @@ public class AdminDAO extends AbstractDAO {
 		}
 		return list;
 	}
-
+// 작성된 글 안보이게 하는법
 	public int boardDel(BoardDTO dto) {
 		Connection con = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -182,7 +182,7 @@ public class AdminDAO extends AbstractDAO {
 		}
 		return result;
 	}
-
+// 댓글관리
 	public List<CommentDTO> commentList() {
 		List<CommentDTO> list = new ArrayList<CommentDTO>();
 		Connection con = db.getConnection();

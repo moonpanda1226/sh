@@ -57,8 +57,7 @@ public class Login extends HttpServlet {
 			LogDAO logDAO = new LogDAO();
 			logDAO.write(log);
 			
-			
-			
+		
 			
 			
 			
